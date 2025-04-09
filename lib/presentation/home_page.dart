@@ -1,58 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/presentation/about_page.dart';
+import 'package:portfolio/presentation/projects_page.dart';
+import 'package:portfolio/presentation/resume_page.dart';
 
-//TODO: Most likely need to change this back to stateful, but wait until we need to make stateful changes.
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _currentIndex = 0;
+
+  void _onNavigationItemTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  final List<Widget> _pages = [About(), Resume(), Projects()];
 
   @override
   Widget build(BuildContext context) {
     //TODO: research if scaffold is most comomonly used or do people create their own custom scaffolds.
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Colors.teal[400],
         title: Text('Ryan Cusick'),
       ),
-      //TODO: We could consider making the child be one of 3 different page widgets and set state if one of the bottom buttons is pressed to change the content.
-      //TODO: If we don't want to use set state, then we could tyr to set up a listener and listen to a variable and adjust screens based on that.
-      body: Center(
-        child: Column(
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.teal[400],
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
+      body: _pages[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        backgroundColor: Colors.teal[400],
+        items: [
+          BottomNavigationBarItem(
+            icon: IconButton(
               color: Colors.black,
               icon: const Icon(Icons.home_rounded),
               onPressed: () {
-                // Handle home button press
+                _onNavigationItemTapped(0);
               },
             ),
-            IconButton(
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
               color: Colors.black,
               icon: const Icon(Icons.remember_me_rounded),
               onPressed: () {
-                // Handle resume button press
+                _onNavigationItemTapped(1);
               },
             ),
-            IconButton(
+            label: 'Resume',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
               color: Colors.black,
               icon: const Icon(Icons.now_wallpaper_rounded),
               onPressed: () {
-                // Handle projects button press
+                _onNavigationItemTapped(2);
               },
             ),
-          ],
-        ),
+            label: 'Projects',
+          ),
+        ],
       ),
     );
   }
