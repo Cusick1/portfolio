@@ -19,16 +19,25 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  List<AppBar> _createAppBars(List<String> titles) {
+    List<AppBar> list = [];
+
+    for (int i = 0; i < titles.length; i++) {
+      list.add(
+        AppBar(backgroundColor: Colors.teal[400], title: Text(titles[i])),
+      );
+    }
+
+    return list;
+  }
+
   final List<Widget> _pages = [About(), Resume(), Projects()];
 
   @override
   Widget build(BuildContext context) {
-    //TODO: research if scaffold is most comomonly used or do people create their own custom scaffolds.
+    List<AppBar> appBars = _createAppBars(['About', 'Resume', 'Projects']);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.teal[400],
-        title: Text('Ryan Cusick'),
-      ),
+      appBar: appBars[_currentIndex],
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
