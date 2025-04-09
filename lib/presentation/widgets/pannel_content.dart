@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PannelContent {
-  const PannelContent({
+  PannelContent({
     required this.header,
     required this.body,
     this.isExpanded = false,
@@ -13,9 +13,9 @@ class PannelContent {
 
   final Widget header;
   final Widget body;
-  final bool isExpanded;
-  final bool canTapOnHeader;
-  final Color? backgroundColor;
-  final Color? splashColor;
-  final Color? highlightColor;
+  bool isExpanded;
+  bool canTapOnHeader;
+  Color? backgroundColor;
+  Color? splashColor;
+  Color? highlightColor;
 }

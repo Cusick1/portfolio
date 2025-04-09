@@ -26,6 +26,11 @@ class _ExpansionPannelsState extends State<ExpansionPannels> {
 
   Widget _pannels() {
     return ExpansionPanelList(
+      expansionCallback: (int index, bool isExpanded) {
+        setState(() {
+          _contentList[index].isExpanded = isExpanded;
+        });
+      },
       children:
           _contentList.map<ExpansionPanel>((PannelContent pannelContent) {
             return ExpansionPanel(
@@ -35,7 +40,10 @@ class _ExpansionPannelsState extends State<ExpansionPannels> {
               body: pannelContent.body,
               isExpanded: pannelContent.isExpanded,
               canTapOnHeader: pannelContent.canTapOnHeader,
-              backgroundColor: pannelContent.backgroundColor,
+              backgroundColor:
+                  pannelContent.isExpanded
+                      ? Colors.white
+                      : pannelContent.backgroundColor,
               splashColor: pannelContent.splashColor,
               highlightColor: pannelContent.highlightColor,
             );

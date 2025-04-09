@@ -21,6 +21,7 @@ class Resume extends StatelessWidget {
                   header: Text('header'),
                   body: Text('body'),
                   isExpanded: true,
+                  backgroundColor: Colors.blue,
                 ),
                 PannelContent(
                   header: Text('header2'),
