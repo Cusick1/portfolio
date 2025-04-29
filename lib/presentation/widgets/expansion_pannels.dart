@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/presentation/widgets/pannel_content.dart';
 
 class ExpansionPannels extends StatefulWidget {
-  const ExpansionPannels({super.key, required this.content});
+  const ExpansionPannels({
+    super.key,
+    required this.content,
+    this.expandedColor,
+  });
 
   final List<PannelContent> content;
+  final Color? expandedColor;
 
   @override
   State<StatefulWidget> createState() => _ExpansionPannelsState();
@@ -12,11 +17,13 @@ class ExpansionPannels extends StatefulWidget {
 
 class _ExpansionPannelsState extends State<ExpansionPannels> {
   late List<PannelContent> _contentList;
+  late Color _expandedColor;
 
   @override
   void initState() {
     super.initState();
     _contentList = widget.content;
+    _expandedColor = widget.expandedColor ?? Colors.white;
   }
 
   @override
@@ -42,7 +49,7 @@ class _ExpansionPannelsState extends State<ExpansionPannels> {
               canTapOnHeader: pannelContent.canTapOnHeader,
               backgroundColor:
                   pannelContent.isExpanded
-                      ? Colors.white
+                      ? _expandedColor
                       : pannelContent.backgroundColor,
               splashColor: pannelContent.splashColor,
               highlightColor: pannelContent.highlightColor,

@@ -11,7 +11,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _currentIndex = 0;
+  //TODO: If we need to set state to refresh resume page make sure this index remains it's current value
+  late int _currentIndex;
 
   void _onNavigationItemTapped(int index) {
     setState(() {
@@ -24,7 +25,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
     for (int i = 0; i < titles.length; i++) {
       list.add(
-        AppBar(backgroundColor: Colors.teal[400], title: Text(titles[i])),
+        AppBar(
+          backgroundColor: Theme.of(context).colorScheme.tertiary,
+          title: Text(
+            titles[i],
+            style: TextStyle(color: Theme.of(context).colorScheme.onTertiary),
+          ),
+        ),
       );
     }
 
@@ -34,18 +41,31 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _pages = [About(), Resume(), Projects()];
 
   @override
+  void initState() {
+    super.initState();
+    _currentIndex = 0;
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme colorScheme = theme.colorScheme;
     List<AppBar> appBars = _createAppBars(['About', 'Resume', 'Projects']);
     return Scaffold(
       appBar: appBars[_currentIndex],
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        backgroundColor: Colors.teal[400],
+        backgroundColor: colorScheme.tertiary,
+        selectedItemColor: colorScheme.tertiaryContainer,
+        selectedLabelStyle: TextStyle(
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.bold,
+        ),
+        unselectedItemColor: Colors.black,
         items: [
           BottomNavigationBarItem(
             icon: IconButton(
-              color: Colors.black,
               icon: const Icon(Icons.home_rounded),
               onPressed: () {
                 _onNavigationItemTapped(0);
@@ -54,18 +74,20 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: IconButton(
-              color: Colors.black,
-              icon: const Icon(Icons.remember_me_rounded),
-              onPressed: () {
-                _onNavigationItemTapped(1);
-              },
+            icon: Column(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.remember_me_rounded),
+                  onPressed: () {
+                    _onNavigationItemTapped(1);
+                  },
+                ),
+              ],
             ),
             label: 'Resume',
           ),
           BottomNavigationBarItem(
             icon: IconButton(
-              color: Colors.black,
               icon: const Icon(Icons.now_wallpaper_rounded),
               onPressed: () {
                 _onNavigationItemTapped(2);

@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants.dart';
 import 'package:portfolio/presentation/widgets/contact_info.dart';
 import 'package:portfolio/presentation/widgets/expansion_pannels.dart';
 import 'package:portfolio/presentation/widgets/pannel_content.dart';
 
+//TODO: FIgure out what I need to do to make this page update when I save/hot reload
 class Resume extends StatelessWidget {
   const Resume({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme colorScheme = theme.colorScheme;
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: colorScheme.tertiaryContainer,
       body: Center(
         child: Column(
           children: [
@@ -18,17 +22,41 @@ class Resume extends StatelessWidget {
             ExpansionPannels(
               content: [
                 PannelContent(
-                  header: Text('header'),
-                  body: Text('body'),
+                  header: Padding(
+                    padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
+                    child: Text('Profile', style: TextStyle(fontSize: 16)),
+                  ),
+                  body: Padding(
+                    padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 8.0),
+                    child: Text(Constants.resumeProfile),
+                  ),
                   isExpanded: true,
-                  backgroundColor: Colors.blue,
+                  backgroundColor: colorScheme.onPrimary,
                 ),
                 PannelContent(
-                  header: Text('header2'),
-                  body: Text('body2'),
+                  header: Padding(
+                    padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
+                    child: Text(
+                      'Work Experience',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                  body: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Text(
+                          'Nationwide Insurance Mutal Company\nFlagship Mobile & Backend Applications',
+                        ),
+                        Text('Software Engineer II => March 2020 - Present'),
+                      ],
+                    ),
+                  ),
                   isExpanded: false,
+                  backgroundColor: colorScheme.onPrimary,
                 ),
               ],
+              expandedColor: colorScheme.onPrimary,
             ),
           ],
         ),

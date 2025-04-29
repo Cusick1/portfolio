@@ -6,8 +6,10 @@ class Projects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme colorScheme = theme.colorScheme;
     return Scaffold(
-      backgroundColor: Colors.deepPurpleAccent,
+      backgroundColor: colorScheme.tertiaryContainer,
       body: Center(
         child: Column(
           children: [
