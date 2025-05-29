@@ -26,10 +26,10 @@ class _MyHomePageState extends State<MyHomePage> {
     for (int i = 0; i < titles.length; i++) {
       list.add(
         AppBar(
-          backgroundColor: Theme.of(context).colorScheme.tertiary,
+          backgroundColor: Theme.of(context).colorScheme.primary,
           title: Text(
             titles[i],
-            style: TextStyle(color: Theme.of(context).colorScheme.onTertiary),
+            style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
           ),
         ),
       );
@@ -56,8 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        backgroundColor: colorScheme.tertiary,
-        selectedItemColor: colorScheme.tertiaryContainer,
+        backgroundColor: colorScheme.primary,
+        selectedItemColor: colorScheme.primaryContainer,
         selectedLabelStyle: TextStyle(
           fontStyle: FontStyle.italic,
           fontWeight: FontWeight.bold,

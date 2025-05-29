@@ -24,35 +24,36 @@ class Resume extends StatelessWidget {
                 PannelContent(
                   header: Padding(
                     padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
-                    child: Text('Profile', style: TextStyle(fontSize: 16)),
+                    child: Text('Profile', style: TextStyle(fontSize: 16, color: colorScheme.onSurface)),
                   ),
                   body: Padding(
                     padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 8.0),
-                    child: Text(Constants.resumeProfile),
+                    child: Text(Constants.resumeProfile, style: TextStyle(color: colorScheme.onSurface)),
                   ),
-                  isExpanded: true,
-                  backgroundColor: colorScheme.onPrimary,
+                  isExpanded: false,
+                  backgroundColor: colorScheme.onPrimary,                  
                 ),
                 PannelContent(
                   header: Padding(
                     padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
                     child: Text(
                       'Work Experience',
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 16, color: colorScheme.onSurface),
                     ),
                   ),
                   body: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'Nationwide Insurance Mutal Company\nFlagship Mobile & Backend Applications',
                         ),
-                        Text('Software Engineer II => March 2020 - Present'),
+                        Text('Software Engineer II\n\t\t\t\t\tMarch 2020 - Present'),
                       ],
                     ),
                   ),
-                  isExpanded: false,
+                  isExpanded: true,
                   backgroundColor: colorScheme.onPrimary,
                 ),
               ],
