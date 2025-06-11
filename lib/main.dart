@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'presentation/home_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/blocs/home_page_cubit.dart';
+import 'package:portfolio/presentation/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      //TODO: Look into themes a little more and see if we want to change how we set ours up.
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -30,14 +33,17 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(
-          brightness: MediaQuery.platformBrightnessOf(context),          
-          seedColor: Color(0xFF779788),          
-          primary: Color(0xFF185940),          
+          brightness: MediaQuery.platformBrightnessOf(context),
+          seedColor: Color(0xFF779788),
+          primary: Color(0xFF185940),
         ),
         // textTheme: TextTheme(),
         // iconButtonTheme: IconButtonThemeData(style: ButtonStyle(textStyle: ))
       ),
-      home: const MyHomePage(),
+      home: BlocProvider(
+        create: (context) => HomePageCubit(),
+        child: const MyHomePage(),
+      ),
     );
   }
 }

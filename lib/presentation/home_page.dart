@@ -1,26 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/blocs/home_page_cubit.dart';
 import 'package:portfolio/presentation/about_page.dart';
 import 'package:portfolio/presentation/projects_page.dart';
 import 'package:portfolio/presentation/resume_page.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+  static final List<Widget> _pages = [About(), Resume(), Projects()];
+  static final List<String> _titles = ['About', 'Resume', 'Projects'];
 
-class _MyHomePageState extends State<MyHomePage> {
-  //TODO: If we need to set state to refresh resume page make sure this index remains it's current value
-  late int _currentIndex;
-
-  void _onNavigationItemTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
-  List<AppBar> _createAppBars(List<String> titles) {
+  List<AppBar> _createAppBars(BuildContext context, List<String> titles) {
     List<AppBar> list = [];
 
     for (int i = 0; i < titles.length; i++) {
@@ -38,65 +29,118 @@ class _MyHomePageState extends State<MyHomePage> {
     return list;
   }
 
-  final List<Widget> _pages = [About(), Resume(), Projects()];
-
-  @override
-  void initState() {
-    super.initState();
-    _currentIndex = 0;
-  }
-
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme colorScheme = theme.colorScheme;
-    List<AppBar> appBars = _createAppBars(['About', 'Resume', 'Projects']);
-    return Scaffold(
-      appBar: appBars[_currentIndex],
-      body: _pages[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        backgroundColor: colorScheme.primary,
-        selectedItemColor: colorScheme.primaryContainer,
-        selectedLabelStyle: TextStyle(
-          fontStyle: FontStyle.italic,
-          fontWeight: FontWeight.bold,
-        ),
-        unselectedItemColor: Colors.black,
-        items: [
-          BottomNavigationBarItem(
-            icon: IconButton(
-              icon: const Icon(Icons.home_rounded),
-              onPressed: () {
-                _onNavigationItemTapped(0);
-              },
+    HomePageCubit homePageCubit = HomePageCubit();
+    List<AppBar> appBars = _createAppBars(context, _titles);
+    return BlocBuilder<HomePageCubit, int>(
+      bloc: homePageCubit,
+      builder: (context, pageState) {
+        return Scaffold(
+          appBar: appBars[pageState],
+          body: _pages[pageState],
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: pageState,
+            backgroundColor: colorScheme.primary,
+            selectedItemColor: colorScheme.primaryContainer,
+            selectedLabelStyle: TextStyle(
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.bold,
             ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Column(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.remember_me_rounded),
+            unselectedItemColor: Colors.black,
+            items: [
+              BottomNavigationBarItem(
+                icon: IconButton(
+                  icon: const Icon(Icons.home_rounded),
                   onPressed: () {
-                    _onNavigationItemTapped(1);
+                    homePageCubit.changePage(0);
                   },
                 ),
-              ],
-            ),
-            label: 'Resume',
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Column(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.remember_me_rounded),
+                      onPressed: () {
+                        homePageCubit.changePage(1);
+                      },
+                    ),
+                  ],
+                ),
+                label: 'Resume',
+              ),
+              BottomNavigationBarItem(
+                icon: IconButton(
+                  icon: const Icon(Icons.now_wallpaper_rounded),
+                  onPressed: () {
+                    homePageCubit.changePage(2);
+                  },
+                ),
+                label: 'Projects',
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: IconButton(
-              icon: const Icon(Icons.now_wallpaper_rounded),
-              onPressed: () {
-                _onNavigationItemTapped(2);
-              },
-            ),
-            label: 'Projects',
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
+
+
+// Copilot generated alternative using Controller.
+//   @override
+  //   Widget build(BuildContext context) {
+  //     final ThemeData theme = Theme.of(context);
+  //     final ColorScheme colorScheme = theme.colorScheme;
+
+  //     return DefaultTabController(
+  //       length: _pages.length,
+  //       child: Builder(
+  //         builder: (context) {
+  //           final TabController tabController = DefaultTabController.of(context);
+  //           return Scaffold(
+  //             appBar: AppBar(
+  //               backgroundColor: colorScheme.primary,
+  //               title: AnimatedBuilder(
+  //                 animation: tabController,
+  //                 builder:
+  //                     (context, _) => Text(
+  //                       _titles[tabController.index],
+  //                       style: TextStyle(color: colorScheme.onPrimary),
+  //                     ),
+  //               ),
+  //             ),
+  //             body: TabBarView(children: _pages),
+  //             bottomNavigationBar: AnimatedBuilder(
+  //               animation: tabController,
+  //               builder:
+  //                   (context, _) => BottomNavigationBar(
+  //                     currentIndex: tabController.index,
+  //                     backgroundColor: colorScheme.primary,
+  //                     selectedItemColor: colorScheme.primaryContainer,
+  //                     selectedLabelStyle: const TextStyle(
+  //                       fontStyle: FontStyle.italic,
+  //                       fontWeight: FontWeight.bold,
+  //                     ),
+  //                     unselectedItemColor: Colors.black,
+  //                     onTap: (index) {
+  //                       tabController.animateTo(index);
+  //                     },
+  //                     items: List.generate(_pages.length, (i) {
+  //                       return BottomNavigationBarItem(
+  //                         icon: Icon(_icons[i]),
+  //                         label: _titles[i],
+  //                       );
+  //                     }),
+  //                   ),
+  //             ),
+  //           );
+  //         },
+  //       ),
+  //     );
+  //   }
+  // }
