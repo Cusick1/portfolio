@@ -1,3 +1,7 @@
+# Mark specific files as vendored (ignored for language stats)
+android/* linguist-vendored
+ios/* linguist-vendored
+# Ignore specific file types
 *.cmake linguist-detectable=false
 *.h linguist-detectable=false
 *.cpp linguist-detectable=false
