@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      //TODO: Look into themes a little more and see if we want to change how we set ours up.
+      // TODO(gitCusick): Look into themes a little more and see if we want to change how we set ours up.
       theme: ThemeData(
         // This is the theme of your application.
         //

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PannelContent {
-  PannelContent({
+class PanelContent {
+  PanelContent({
     required this.header,
     required this.body,
     this.isExpanded = false,

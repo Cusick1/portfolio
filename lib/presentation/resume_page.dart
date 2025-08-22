@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/presentation/widgets/contact_info.dart';
-import 'package:portfolio/presentation/widgets/expansion_pannels.dart';
-import 'package:portfolio/presentation/widgets/pannel_content.dart';
+import 'package:portfolio/presentation/widgets/expansion_panels.dart';
+import 'package:portfolio/presentation/widgets/panel_content.dart';
 
-//TODO: FIgure out what I need to do to make this page update when I save/hot reload
+// TODO(gitCusick): FIgure out what I need to do to make this page update when I save/hot reload
 class Resume extends StatelessWidget {
   const Resume({super.key});
 
@@ -19,9 +19,9 @@ class Resume extends StatelessWidget {
           children: [
             Padding(padding: const EdgeInsets.all(8.0), child: ContactInfo()),
             // Create a List of DropDown Widgets
-            ExpansionPannels(
+            ExpansionPanels(
               content: [
-                PannelContent(
+                PanelContent(
                   header: Padding(
                     padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
                     child: Text('Profile', style: TextStyle(fontSize: 16, color: colorScheme.onSurface)),
@@ -33,7 +33,7 @@ class Resume extends StatelessWidget {
                   isExpanded: false,
                   backgroundColor: colorScheme.onPrimary,                  
                 ),
-                PannelContent(
+                PanelContent(
                   header: Padding(
                     padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
                     child: Text(
@@ -47,7 +47,7 @@ class Resume extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Nationwide Insurance Mutal Company\nFlagship Mobile & Backend Applications',
+                          'Nationwide Insurance Mutual Company\nFlagship Mobile & Backend Applications',
                         ),
                         Text('Software Engineer II\n\t\t\t\t\tMarch 2020 - Present'),
                       ],
