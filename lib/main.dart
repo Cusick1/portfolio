@@ -13,16 +13,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    bool darkMode = true;
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: MediaQuery.platformBrightnessOf(context) == Brightness.dark
+        // colorScheme: MediaQuery.platformBrightnessOf(context) == Brightness.dark
+        colorScheme: darkMode
             ? ColorScheme.dark(
                 primary: Color(0xFF165a43),
                 surface: Color(0xFF131f1b),
                 onSurface: Colors.white,
                 onSurfaceVariant: Colors.grey[500],
               )
+            // ignore: dead_code
             : ColorScheme.light(
                 primary: Color(0xFF165a43),
                 surface: Colors.white,

@@ -4,7 +4,6 @@ import 'package:portfolio/presentation/widgets/contact_info.dart';
 import 'package:portfolio/presentation/widgets/expansion_panels.dart';
 import 'package:portfolio/presentation/widgets/panel_content.dart';
 
-// TODO(gitCusick): Figure out what I need to do to make this page update when I save/hot reload.
 class Resume extends StatelessWidget {
   const Resume({super.key});
 
@@ -62,21 +61,18 @@ class Resume extends StatelessWidget {
                           Text(
                             '''Nationwide Insurance Mutual Company\nFlagship Mobile & Backend Applications''',
                           ),
-                          Row(
-                            children: [
-                              Text('Sr Software Engineer'),
-                              Expanded(child: SizedBox()),
-                              Text('March 2020 - Present'),
-                            ],
+                          Text('Sr Software Engineer'),
+                          Text('March 2020 - Present'),
+                          Text(
+                            '''\u2022 Led the development and implementation of
+   multiple Perks and Rewards features, guiding the
+   team through planning, implementing, and
+   releasing a complete redesign utilizing the Flutter
+   framework.''',
                           ),
                           Text(
                             '''
-            \u2022 Led the development and implementation of multiple\n\t\t\tPerks and Rewards features, guiding the team
-            \t\t\tthrough planning, implementing, and releasing a\n\t\t\tcomplete redesign utilizing the Flutter framework.''',
-                          ),
-                          Text(
-                            '''
-            \u2022 Integrated an in-house API, enhancing the feature’s\n\t\t\tcapabilities and user experience.''',
+\u2022 Integrated an in-house API, enhancing the feature’s capabilities and user experience.''',
                           ),
                         ],
                       ),
