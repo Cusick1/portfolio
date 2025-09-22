@@ -32,11 +32,13 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(
-          brightness: MediaQuery.platformBrightnessOf(context),
-          seedColor: Color(0xFF779788),
-          primary: Color(0xFF185940),
+        colorScheme: ColorScheme.dark(
+          primary: Color(0xFF165a43),
+          surface: Color(0xFF131f1b),
+          onSurface: Colors.white,
+          onSurfaceVariant: Colors.grey[500],
         ),
+        useMaterial3: true,
         // textTheme: TextTheme(),
         // iconButtonTheme: IconButtonThemeData(style: ButtonStyle(textStyle: ))
       ),
