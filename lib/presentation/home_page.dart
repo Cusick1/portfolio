@@ -8,7 +8,20 @@ import 'package:portfolio/presentation/resume_page.dart';
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
-  static final List<Widget> _pages = [About(), Resume(), Projects()];
+  @override
+  Widget build(BuildContext context) {
+    return const HomePageView();
+  }
+}
+
+class HomePageView extends StatelessWidget {
+  const HomePageView({super.key});
+
+  static final List<Widget> _pages = [
+    const About(),
+    const Resume(),
+    const Projects(),
+  ];
   static final List<String> _titles = ['About', 'Resume', 'Projects'];
 
   List<AppBar> _createAppBars(BuildContext context, List<String> titles) {
@@ -31,10 +44,10 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ColorScheme colorScheme = theme.colorScheme;
     HomePageCubit homePageCubit = context.read<HomePageCubit>();
-    List<AppBar> appBars = _createAppBars(context, _titles);
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final List<AppBar> appBars = _createAppBars(context, _titles);
     return BlocBuilder<HomePageCubit, int>(
       bloc: homePageCubit,
       builder: (context, pageState) {
@@ -43,13 +56,13 @@ class MyHomePage extends StatelessWidget {
           body: _pages[pageState],
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: pageState,
-            backgroundColor: colorScheme.primary,
-            selectedItemColor: colorScheme.primaryContainer,
-            selectedLabelStyle: TextStyle(
+            backgroundColor: colorScheme.surface,
+            selectedItemColor: colorScheme.primary,
+            selectedLabelStyle: const TextStyle(
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.bold,
             ),
-            unselectedItemColor: Colors.black,
+            unselectedItemColor: colorScheme.onSurfaceVariant,
             items: [
               BottomNavigationBarItem(
                 icon: IconButton(
