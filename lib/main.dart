@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
                 primary: Color(0xFF165a43),
                 surface: Color(0xFF131f1b),
                 onSurface: Colors.white,
-                onSurfaceVariant: Colors.grey[500],
+                onSurfaceVariant: const Color(0xFF9E9E9E),
+                onPrimaryContainer: const Color(0xFFCEC8C8),
               )
             // ignore: dead_code
             : ColorScheme.light(

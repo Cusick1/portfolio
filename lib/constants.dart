@@ -8,4 +8,6 @@ class Constants {
   static const String gitHubLink = 'https://github.com/Cusick1';
   static const String resumeProfile =
       'Results-driven software engineer with expertise in Dart, Flutter, Java, Spring Boot, microservices, and cloud-native architectures. Skilled at leading teams through the software development life cycle to deliver enterprise-grade solutions, optimize real-time data processing, and drive business value. Adept at solving complex technical challenges, deploying production-ready code, and collaborating cross-functionally in Agile environments.';
+  static const String education = 'B.S. in Computer Science';
+  static const String educationSubText = 'Ohio University 2015 - 2019';
 }

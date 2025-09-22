@@ -22,7 +22,7 @@ class HomePageView extends StatelessWidget {
     const Resume(),
     const Projects(),
   ];
-  static final List<String> _titles = ['About', 'Resume', 'Projects'];
+  static final List<String> _titles = ['Home', 'Resume', 'Projects'];
 
   List<AppBar> _createAppBars(BuildContext context, List<String> titles) {
     List<AppBar> list = [];
@@ -30,7 +30,7 @@ class HomePageView extends StatelessWidget {
     for (int i = 0; i < titles.length; i++) {
       list.add(
         AppBar(
-          backgroundColor: Theme.of(context).colorScheme.primary,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           title: Text(
             titles[i],
             style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
@@ -56,8 +56,8 @@ class HomePageView extends StatelessWidget {
           body: _pages[pageState],
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: pageState,
-            backgroundColor: colorScheme.primary,
-            selectedItemColor: colorScheme.onSurface,
+            backgroundColor: colorScheme.surface,
+            selectedItemColor: colorScheme.primary,
             selectedLabelStyle: const TextStyle(
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.bold,
