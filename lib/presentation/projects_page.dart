@@ -9,7 +9,7 @@ class Projects extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final ColorScheme colorScheme = theme.colorScheme;
     return Scaffold(
-      backgroundColor: colorScheme.tertiaryContainer,
+      backgroundColor: colorScheme.surface,
       body: Center(
         child: Column(
           children: [

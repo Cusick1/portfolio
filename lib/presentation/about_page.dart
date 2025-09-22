@@ -18,27 +18,27 @@ class About extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final ColorScheme colorScheme = theme.colorScheme;
     return Scaffold(
-      backgroundColor: colorScheme.tertiaryContainer,
+      backgroundColor: colorScheme.surface,
       body: Column(
         children: [
           SizedBox(height: 12),
-          Padding(padding: const EdgeInsets.all(8.0), child: ContactInfo()),
+          Padding(padding: const EdgeInsets.all(8), child: ContactInfo()),
           Padding(
-            padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
             child: Text(
               Constants.summaryPart1,
-              style: TextStyle(fontSize: 20, color: Colors.black),
+              style: TextStyle(fontSize: 20, color: colorScheme.onSurface),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
             child: Text(
               Constants.summaryPart2,
-              style: TextStyle(fontSize: 15, color: Colors.black),
+              style: TextStyle(fontSize: 15, color: colorScheme.onSurface),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: Column(
               children: [
                 InkWell(
@@ -46,7 +46,7 @@ class About extends StatelessWidget {
                   child: Text(
                     Constants.linkedInLink,
                     style: TextStyle(
-                      color: Colors.blue[900],
+                      color: colorScheme.secondary,
                       decoration: TextDecoration.underline,
                     ),
                   ),
@@ -56,7 +56,7 @@ class About extends StatelessWidget {
                   child: Text(
                     Constants.gitHubLink,
                     style: TextStyle(
-                      color: Colors.blue[900],
+                      color: colorScheme.secondary,
                       decoration: TextDecoration.underline,
                     ),
                   ),

@@ -13,7 +13,7 @@ class Resume extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     return Scaffold(
-      backgroundColor: colorScheme.tertiaryContainer,
+      backgroundColor: colorScheme.surface,
       body: Center(
         child: Column(
           children: [
@@ -39,7 +39,7 @@ class Resume extends StatelessWidget {
                       style: TextStyle(color: colorScheme.onSurface),
                     ),
                   ),
-                  backgroundColor: colorScheme.onPrimary,
+                  backgroundColor: colorScheme.primary,
                 ),
                 PanelContent(
                   header: Padding(
@@ -80,10 +80,10 @@ class Resume extends StatelessWidget {
                     ),
                   ),
                   isExpanded: true,
-                  backgroundColor: colorScheme.onPrimary,
+                  backgroundColor: colorScheme.primary,
                 ),
               ],
-              expandedColor: colorScheme.onPrimary,
+              expandedColor: colorScheme.primary,
             ),
           ],
         ),
