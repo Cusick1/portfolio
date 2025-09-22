@@ -23,5 +23,22 @@ doc/api/
 *.js.deps
 *.js.map
 
-.flutter-plugins
+
 .flutter-plugins-dependencies
+.flutter-plugins
+.DS_Store
+.pub/
+android/app/google-services.json
+.idea/
+android/key.properties
+
+#ios specific
+ios/.generated/
+ios/Podfile*
+ios/Flutter/Debug.xcconfig
+ios/Flutter/Release.xcconfig
+ios/Runner.xcworkspace/contents.xcworkspacedata
+
+#android specific
+android/app/google-services.json
+android/key.properties
