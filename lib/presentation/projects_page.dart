@@ -6,13 +6,14 @@ class Projects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ColorScheme colorScheme = theme.colorScheme;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return Scaffold(
       backgroundColor: colorScheme.surface,
       body: Center(
         child: Column(
           children: [
+            SizedBox(height: 12),
             Padding(padding: const EdgeInsets.all(8.0), child: ContactInfo()),
           ],
         ),

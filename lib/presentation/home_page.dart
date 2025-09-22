@@ -56,8 +56,8 @@ class HomePageView extends StatelessWidget {
           body: _pages[pageState],
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: pageState,
-            backgroundColor: colorScheme.surface,
-            selectedItemColor: colorScheme.primary,
+            backgroundColor: colorScheme.primary,
+            selectedItemColor: colorScheme.onSurface,
             selectedLabelStyle: const TextStyle(
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.bold,
