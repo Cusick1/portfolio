@@ -16,12 +16,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.dark(
-          primary: Color(0xFF165a43),
-          surface: Color(0xFF131f1b),
-          onSurface: Colors.white,
-          onSurfaceVariant: Colors.grey[500],
-        ),
+        colorScheme: MediaQuery.platformBrightnessOf(context) == Brightness.dark
+            ? ColorScheme.dark(
+                primary: Color(0xFF165a43),
+                surface: Color(0xFF131f1b),
+                onSurface: Colors.white,
+                onSurfaceVariant: Colors.grey[500],
+              )
+            : ColorScheme.light(
+                primary: Color(0xFF165a43),
+                surface: Colors.white,
+                onSurface: Colors.grey.shade900,
+                onSurfaceVariant: Colors.grey[500],
+              ),
         useMaterial3: true,
         // textTheme: TextTheme(),
         // iconButtonTheme: IconButtonThemeData(style: ButtonStyle(textStyle: ))
