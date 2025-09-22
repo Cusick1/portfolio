@@ -33,7 +33,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme colorScheme = theme.colorScheme;
-    HomePageCubit homePageCubit = HomePageCubit();
+    HomePageCubit homePageCubit = context.read<HomePageCubit>();
     List<AppBar> appBars = _createAppBars(context, _titles);
     return BlocBuilder<HomePageCubit, int>(
       bloc: homePageCubit,
