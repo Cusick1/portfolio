@@ -33,7 +33,7 @@ class HomePageView extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.primary,
           title: Text(
             titles[i],
-            style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+            style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
           ),
         ),
       );
