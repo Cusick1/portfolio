@@ -42,35 +42,35 @@ class About extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextButton(
+                TextButton.icon(
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all(
                       colorScheme.primary,
                     ),
                   ),
                   onPressed: () => _launchUrl(Constants.linkedInLink),
-                  child: Text(
-                    'LinkedIn',
+                  icon: Icon(Icons.work, color: colorScheme.onSurface),
+                  label: Text(
+                    'Connect on LinkedIn',
                     style: TextStyle(
-                      color: colorScheme.secondary,
-                      // decoration: TextDecoration.underline,
+                      color: colorScheme.onSurface,
                       fontSize: 18,
                     ),
                   ),
                 ),
-                const SizedBox(width: 32),
-                TextButton(
+                const SizedBox(width: 16),
+                TextButton.icon(
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all(
                       colorScheme.primary,
                     ),
                   ),
                   onPressed: () => _launchUrl(Constants.gitHubLink),
-                  child: Text(
+                  icon: Icon(Icons.person, color: colorScheme.onSurface),
+                  label: Text(
                     'GitHub',
                     style: TextStyle(
-                      color: colorScheme.secondary,
-                      // decoration: TextDecoration.underline,
+                      color: colorScheme.onSurface,
                       fontSize: 18,
                     ),
                   ),
