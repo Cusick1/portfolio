@@ -57,8 +57,8 @@ class HomePageView extends StatelessWidget {
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: pageState,
             backgroundColor: colorScheme.surface,
-            selectedItemColor: colorScheme.primary,
-            selectedLabelStyle: const TextStyle(
+            selectedItemColor: colorScheme.onSurface,
+            selectedLabelStyle: TextStyle(
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.bold,
             ),
@@ -66,33 +66,34 @@ class HomePageView extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 icon: IconButton(
-                  icon: const Icon(Icons.home_rounded),
+                  icon: const Icon(Icons.home_outlined, size: 24),
                   onPressed: () {
                     homePageCubit.changePage(0);
                   },
                 ),
+                activeIcon: const Icon(Icons.home_rounded, size: 32),
+
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: Column(
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.remember_me_rounded),
-                      onPressed: () {
-                        homePageCubit.changePage(1);
-                      },
-                    ),
-                  ],
+                icon: IconButton(
+                  icon: const Icon(Icons.remember_me_outlined, size: 24),
+                  onPressed: () {
+                    homePageCubit.changePage(1);
+                  },
                 ),
+                activeIcon: const Icon(Icons.remember_me, size: 32),
+
                 label: 'Resume',
               ),
               BottomNavigationBarItem(
                 icon: IconButton(
-                  icon: const Icon(Icons.now_wallpaper_rounded),
+                  icon: const Icon(Icons.now_wallpaper_outlined, size: 24),
                   onPressed: () {
                     homePageCubit.changePage(2);
                   },
                 ),
+                activeIcon: const Icon(Icons.now_wallpaper, size: 32),
                 label: 'Projects',
               ),
             ],
