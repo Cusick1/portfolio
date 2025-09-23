@@ -19,7 +19,7 @@ class About extends StatelessWidget {
     final ColorScheme colorScheme = theme.colorScheme;
     return Scaffold(
       backgroundColor: colorScheme.surface,
-      body: Column(
+      body: ListView(
         children: [
           SizedBox(height: 12),
           Padding(padding: const EdgeInsets.all(8), child: ContactInfo()),
@@ -34,30 +34,44 @@ class About extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
             child: Text(
               Constants.summaryPart2,
-              style: TextStyle(fontSize: 15, color: colorScheme.onSurface),
+              style: TextStyle(fontSize: 18, color: colorScheme.onSurface),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8),
-            child: Column(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                InkWell(
-                  onTap: () => _launchUrl(Constants.linkedInLink),
+                TextButton(
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(
+                      colorScheme.primary,
+                    ),
+                  ),
+                  onPressed: () => _launchUrl(Constants.linkedInLink),
                   child: Text(
-                    Constants.linkedInLink,
+                    'LinkedIn',
                     style: TextStyle(
                       color: colorScheme.secondary,
-                      decoration: TextDecoration.underline,
+                      // decoration: TextDecoration.underline,
+                      fontSize: 18,
                     ),
                   ),
                 ),
-                InkWell(
-                  onTap: () => _launchUrl(Constants.gitHubLink),
+                const SizedBox(width: 32),
+                TextButton(
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(
+                      colorScheme.primary,
+                    ),
+                  ),
+                  onPressed: () => _launchUrl(Constants.gitHubLink),
                   child: Text(
-                    Constants.gitHubLink,
+                    'GitHub',
                     style: TextStyle(
                       color: colorScheme.secondary,
-                      decoration: TextDecoration.underline,
+                      // decoration: TextDecoration.underline,
+                      fontSize: 18,
                     ),
                   ),
                 ),
