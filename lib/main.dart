@@ -13,30 +13,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    bool darkMode = true;
     return MaterialApp(
       title: 'Flutter Demo',
-      //TODO: Look into themes a little more and see if we want to change how we set ours up.
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(
-          brightness: MediaQuery.platformBrightnessOf(context),
-          seedColor: Color(0xFF779788),
-          primary: Color(0xFF185940),
-        ),
+        // colorScheme: MediaQuery.platformBrightnessOf(context) == Brightness.dark
+        colorScheme: darkMode
+            ? ColorScheme.dark(
+                primary: Color(0xFF165a43),
+                surface: Color(0xFF131f1b),
+                onSurface: Colors.white,
+                onSurfaceVariant: const Color(0xFF9E9E9E),
+                onPrimaryContainer: const Color(0xFFCEC8C8),
+              )
+            // ignore: dead_code
+            : ColorScheme.light(
+                primary: Color(0xFF165a43),
+                surface: Colors.white,
+                onSurface: Colors.grey.shade900,
+                onSurfaceVariant: Colors.grey[500],
+              ),
+        useMaterial3: true,
         // textTheme: TextTheme(),
         // iconButtonTheme: IconButtonThemeData(style: ButtonStyle(textStyle: ))
       ),

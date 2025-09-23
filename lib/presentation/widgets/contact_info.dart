@@ -12,24 +12,15 @@ class ContactInfo extends StatelessWidget {
       children: [
         Text(
           'Ryan Cusick',
-          style: TextStyle(
-            fontSize: 25,
-            color: colorScheme.onPrimaryContainer,
-          ),
+          style: TextStyle(fontSize: 25, color: colorScheme.onSurface),
         ),
         Text(
           '(412) 992-7227',
-          style: TextStyle(
-            fontSize: 15,
-            color: colorScheme.onPrimaryContainer,
-          ),
+          style: TextStyle(fontSize: 15, color: colorScheme.onSurface),
         ),
         Text(
           'Ryan.Cusick.1997@gmail.com',
-          style: TextStyle(
-            fontSize: 15,
-            color: colorScheme.onPrimaryContainer,
-          ),
+          style: TextStyle(fontSize: 15, color: colorScheme.onSurface),
         ),
       ],
     );

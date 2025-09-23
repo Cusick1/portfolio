@@ -6,14 +6,102 @@ class Projects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ColorScheme colorScheme = theme.colorScheme;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return Scaffold(
-      backgroundColor: colorScheme.tertiaryContainer,
+      backgroundColor: colorScheme.surface,
       body: Center(
-        child: Column(
+        child: ListView(
           children: [
+            SizedBox(height: 12),
             Padding(padding: const EdgeInsets.all(8.0), child: ContactInfo()),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      CircleAvatar(radius: 80, child: Text('1')),
+                      SizedBox(height: 8),
+                      Text(
+                        'More coming soon!',
+                        style: theme.textTheme.bodyLarge,
+                      ),
+                    ],
+                  ),
+                  SizedBox(width: 36),
+                  Column(
+                    children: [
+                      CircleAvatar(radius: 80, child: Text('2')),
+                      SizedBox(height: 8),
+                      Text(
+                        'More coming soon!',
+                        style: theme.textTheme.bodyLarge,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      CircleAvatar(radius: 80, child: Text('3')),
+                      SizedBox(height: 8),
+                      Text(
+                        'More coming soon!',
+                        style: theme.textTheme.bodyLarge,
+                      ),
+                    ],
+                  ),
+                  SizedBox(width: 36),
+                  Column(
+                    children: [
+                      CircleAvatar(radius: 80, child: Text('4')),
+                      SizedBox(height: 8),
+                      Text(
+                        'More coming soon!',
+                        style: theme.textTheme.bodyLarge,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      CircleAvatar(radius: 80, child: Text('5')),
+                      SizedBox(height: 8),
+                      Text(
+                        'More coming soon!',
+                        style: theme.textTheme.bodyLarge,
+                      ),
+                    ],
+                  ),
+                  SizedBox(width: 36),
+                  Column(
+                    children: [
+                      CircleAvatar(radius: 80, child: Text('6')),
+                      SizedBox(height: 8),
+                      Text(
+                        'More coming soon!',
+                        style: theme.textTheme.bodyLarge,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

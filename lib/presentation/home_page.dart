@@ -8,8 +8,21 @@ import 'package:portfolio/presentation/resume_page.dart';
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
-  static final List<Widget> _pages = [About(), Resume(), Projects()];
-  static final List<String> _titles = ['About', 'Resume', 'Projects'];
+  @override
+  Widget build(BuildContext context) {
+    return const HomePageView();
+  }
+}
+
+class HomePageView extends StatelessWidget {
+  const HomePageView({super.key});
+
+  static final List<Widget> _pages = [
+    const About(),
+    const Resume(),
+    const Projects(),
+  ];
+  static final List<String> _titles = ['Home', 'Resume', 'Projects'];
 
   List<AppBar> _createAppBars(BuildContext context, List<String> titles) {
     List<AppBar> list = [];
@@ -17,10 +30,10 @@ class MyHomePage extends StatelessWidget {
     for (int i = 0; i < titles.length; i++) {
       list.add(
         AppBar(
-          backgroundColor: Theme.of(context).colorScheme.primary,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           title: Text(
             titles[i],
-            style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+            style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
           ),
         ),
       );
@@ -31,10 +44,10 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ColorScheme colorScheme = theme.colorScheme;
-    HomePageCubit homePageCubit = HomePageCubit();
-    List<AppBar> appBars = _createAppBars(context, _titles);
+    HomePageCubit homePageCubit = context.read<HomePageCubit>();
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final List<AppBar> appBars = _createAppBars(context, _titles);
     return BlocBuilder<HomePageCubit, int>(
       bloc: homePageCubit,
       builder: (context, pageState) {
@@ -43,43 +56,44 @@ class MyHomePage extends StatelessWidget {
           body: _pages[pageState],
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: pageState,
-            backgroundColor: colorScheme.primary,
-            selectedItemColor: colorScheme.primaryContainer,
+            backgroundColor: colorScheme.surface,
+            selectedItemColor: colorScheme.onSurface,
             selectedLabelStyle: TextStyle(
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.bold,
             ),
-            unselectedItemColor: Colors.black,
+            unselectedItemColor: colorScheme.onSurfaceVariant,
             items: [
               BottomNavigationBarItem(
                 icon: IconButton(
-                  icon: const Icon(Icons.home_rounded),
+                  icon: const Icon(Icons.home_outlined, size: 24),
                   onPressed: () {
                     homePageCubit.changePage(0);
                   },
                 ),
+                activeIcon: const Icon(Icons.home_rounded, size: 32),
+
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: Column(
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.remember_me_rounded),
-                      onPressed: () {
-                        homePageCubit.changePage(1);
-                      },
-                    ),
-                  ],
+                icon: IconButton(
+                  icon: const Icon(Icons.remember_me_outlined, size: 24),
+                  onPressed: () {
+                    homePageCubit.changePage(1);
+                  },
                 ),
+                activeIcon: const Icon(Icons.remember_me, size: 32),
+
                 label: 'Resume',
               ),
               BottomNavigationBarItem(
                 icon: IconButton(
-                  icon: const Icon(Icons.now_wallpaper_rounded),
+                  icon: const Icon(Icons.now_wallpaper_outlined, size: 24),
                   onPressed: () {
                     homePageCubit.changePage(2);
                   },
                 ),
+                activeIcon: const Icon(Icons.now_wallpaper, size: 32),
                 label: 'Projects',
               ),
             ],

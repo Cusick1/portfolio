@@ -18,46 +18,60 @@ class About extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final ColorScheme colorScheme = theme.colorScheme;
     return Scaffold(
-      backgroundColor: colorScheme.tertiaryContainer,
-      body: Column(
+      backgroundColor: colorScheme.surface,
+      body: ListView(
         children: [
           SizedBox(height: 12),
-          Padding(padding: const EdgeInsets.all(8.0), child: ContactInfo()),
+          Padding(padding: const EdgeInsets.all(8), child: ContactInfo()),
           Padding(
-            padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
             child: Text(
               Constants.summaryPart1,
-              style: TextStyle(fontSize: 20, color: Colors.black),
+              style: TextStyle(fontSize: 20, color: colorScheme.onSurface),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
             child: Text(
               Constants.summaryPart2,
-              style: TextStyle(fontSize: 15, color: Colors.black),
+              style: TextStyle(fontSize: 18, color: colorScheme.onSurface),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
+            padding: const EdgeInsets.all(8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                InkWell(
-                  onTap: () => _launchUrl(Constants.linkedInLink),
-                  child: Text(
-                    Constants.linkedInLink,
+                TextButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(
+                      colorScheme.primary,
+                    ),
+                  ),
+                  onPressed: () => _launchUrl(Constants.linkedInLink),
+                  icon: Icon(Icons.work, color: colorScheme.onSurface),
+                  label: Text(
+                    'Connect on LinkedIn',
                     style: TextStyle(
-                      color: Colors.blue[900],
-                      decoration: TextDecoration.underline,
+                      color: colorScheme.onSurface,
+                      fontSize: 18,
                     ),
                   ),
                 ),
-                InkWell(
-                  onTap: () => _launchUrl(Constants.gitHubLink),
-                  child: Text(
-                    Constants.gitHubLink,
+                const SizedBox(width: 16),
+                TextButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(
+                      colorScheme.primary,
+                    ),
+                  ),
+                  onPressed: () => _launchUrl(Constants.gitHubLink),
+                  icon: Icon(Icons.person, color: colorScheme.onSurface),
+                  label: Text(
+                    'GitHub',
                     style: TextStyle(
-                      color: Colors.blue[900],
-                      decoration: TextDecoration.underline,
+                      color: colorScheme.onSurface,
+                      fontSize: 18,
                     ),
                   ),
                 ),
