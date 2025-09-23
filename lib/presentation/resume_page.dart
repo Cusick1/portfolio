@@ -18,14 +18,16 @@ class Resume extends StatelessWidget {
           children: [
             SizedBox(height: 12),
             const Padding(padding: EdgeInsets.all(8), child: ContactInfo()),
-            // Create a List of DropDown Widgets
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: ExpansionPanels(
+                  expandedColor: colorScheme.primary,
                   content: [
                     PanelContent(
                       canTapOnHeader: true,
+                      isExpanded: false,
+                      backgroundColor: colorScheme.primary,
                       header: Padding(
                         padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
                         child: Text(
@@ -43,49 +45,11 @@ class Resume extends StatelessWidget {
                           style: TextStyle(color: colorScheme.onSurface),
                         ),
                       ),
-                      backgroundColor: colorScheme.primary,
                     ),
                     PanelContent(
                       canTapOnHeader: true,
-                      header: Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
-                        child: Text(
-                          'Work Experience',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: colorScheme.onSurface,
-                          ),
-                        ),
-                      ),
-                      body: const Padding(
-                        padding: EdgeInsets.all(8),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '''Nationwide Insurance Mutual Company\nFlagship Mobile & Backend Applications''',
-                            ),
-                            Text('Sr Software Engineer'),
-                            Text('March 2020 - Present'),
-                            Text(
-                              '''\u2022 Led the development and implementation of
-               multiple Perks and Rewards features, guiding the
-               team through planning, implementing, and
-               releasing a complete redesign utilizing the Flutter
-               framework.''',
-                            ),
-                            Text(
-                              '''
-            \u2022 Integrated an in-house API, enhancing the feature’s capabilities and user experience.''',
-                            ),
-                          ],
-                        ),
-                      ),
-                      isExpanded: true,
+                      isExpanded: false,
                       backgroundColor: colorScheme.primary,
-                    ),
-                    PanelContent(
-                      canTapOnHeader: true,
                       header: Padding(
                         padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
                         child: Text(
@@ -122,11 +86,47 @@ class Resume extends StatelessWidget {
                           ],
                         ),
                       ),
-                      isExpanded: true,
+                    ),
+                    PanelContent(
+                      canTapOnHeader: true,
+                      isExpanded: false,
                       backgroundColor: colorScheme.primary,
+                      header: Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
+                        child: Text(
+                          'Work Experience',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: colorScheme.onSurface,
+                          ),
+                        ),
+                      ),
+                      body: const Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '''Nationwide Insurance Mutual Company\nFlagship Mobile & Backend Applications''',
+                            ),
+                            Text('Sr Software Engineer'),
+                            Text('March 2020 - Present'),
+                            Text(
+                              '''\u2022 Led the development and implementation of
+               multiple Perks and Rewards features, guiding the
+               team through planning, implementing, and
+               releasing a complete redesign utilizing the Flutter
+               framework.''',
+                            ),
+                            Text(
+                              '''
+            \u2022 Integrated an in-house API, enhancing the feature’s capabilities and user experience.''',
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
-                  expandedColor: colorScheme.primary,
                 ),
               ),
             ),
