@@ -42,3 +42,8 @@ ios/Runner.xcworkspace/contents.xcworkspacedata
 #android specific
 android/app/google-services.json
 android/key.properties
+
+#macOS specific
+macos/Podfile*
+macos/Runner.xcodeproj/project.pbxproj
+macos/Runner.xcworkspace/contents.xcworkspacedata
